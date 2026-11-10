@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>福代抽籤｜部門福利服務代表遴選</title>
+    <meta
+      name="description"
+      content="依 Team 工程師人數加權，公正抽選福代／福委所屬 Team"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="atmosphere" aria-hidden="true"></div>
+
+    <header class="hero">
+      <p class="brand">福代抽籤</p>
+      <h1>依人數加權，抽出下任福代所屬 Team</h1>
+      <p class="lede">
+        Step&nbsp;2：無自願報名時，以各 Team 工程師（含）以上人數為權重進行抽籤。
+      </p>
+      <div class="hero-cta">
+        <button type="button" class="btn-primary" id="drawBtn">開始抽籤</button>
+        <button type="button" class="btn-ghost" id="scrollTeamsBtn">設定人數</button>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="reel" id="heroReel">
+          <div class="reel-window">
+            <div class="reel-strip" id="reelStrip"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel" id="teamsSection" aria-labelledby="teamsHeading">
+        <div class="section-head">
+          <h2 id="teamsHeading">Team 人數權重</h2>
+          <p>人數可即時調整，機率隨之重算。預設五個主要 Team。</p>
+        </div>
+        <div class="teams" id="teamsList"></div>
+        <div class="team-actions">
+          <button type="button" class="btn-ghost" id="addTeamBtn">新增 Team</button>
+          <button type="button" class="btn-ghost" id="resetTeamsBtn">還原預設</button>
+        </div>
+        <div class="odds" aria-live="polite">
+          <h3>抽中機率</h3>
+          <ul id="oddsList"></ul>
+          <p class="meta" id="totalCount"></p>
+        </div>
+      </section>
+
+      <section class="panel result-panel" id="resultSection" aria-labelledby="resultHeading" hidden>
+        <div class="section-head">
+          <h2 id="resultHeading">抽籤結果</h2>
+          <p>中籤 Team 由單位主管及 Team leader 協助推派出福代（福委）。</p>
+        </div>
+        <div class="result-card" id="resultCard">
+          <p class="result-label">中籤 Team</p>
+          <p class="result-team" id="resultTeam">—</p>
+          <p class="result-detail" id="resultDetail"></p>
+        </div>
+        <ol class="history" id="historyList" aria-label="抽籤紀錄"></ol>
+      </section>
+
+      <section class="panel rules" aria-labelledby="rulesHeading">
+        <div class="section-head">
+          <h2 id="rulesHeading">福代／福委遴選辦法</h2>
+          <p>Draft for reference only</p>
+        </div>
+        <ol class="rules-list">
+          <li>
+            本部門福利服務代表（簡稱<strong>福代</strong>）原則上以工程師（含）以上擔任，每年一任。
+          </li>
+          <li>
+            若下屆跨部門福利委員（簡稱<strong>福委</strong>）討論結果由本部門出任，本部門福代兼任跨部門福委。
+          </li>
+          <li>
+            福代（福委）遴選方法
+            <ul>
+              <li>
+                <span class="step closed">Step 1 · Closed</span>
+                公告遴選，有意願之同仁 5 日內以 email 報名，最後由部門主管擇一上任。
+              </li>
+              <li>
+                <span class="step active">Step 2 · 本工具</span>
+                若無同仁報名，則進行抽籤：依主要 Team 別工程師（含）以上人數為權重分配機率，抽籤決定一個 Team。
+              </li>
+              <li>
+                <span class="step closed">Step 3 · Closed</span>
+                從中籤的 Team，由單位主管及 Team leader 協助推派出福代（福委）。
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      <p>抽籤使用 <code>crypto.getRandomValues</code> 密碼學安全亂數 · 結果僅供部門內部程序參考</p>
+    </footer>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
